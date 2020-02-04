@@ -9,8 +9,9 @@
   img = xmlDoc.getElementsByTagName("image")[0];
   url = img.getElementsByTagName("url")[0];
   title = xmlDoc.getElementsByTagName("title")[0];
-  title = xmlDoc.getElementsByTagName("title")[0];
-  console.log(url);
+  description = xmlDoc.getElementsByTagName("description")[0];
+
+
 
   });
   xml.send();
