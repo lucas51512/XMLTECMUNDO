@@ -33,7 +33,7 @@
   if ('serviceWorker' in navigator) {
 window.addEventListener('load', () => {
   navigator.serviceWorker
-  .register("serviceWorker.js")
+  .register("http://localhost/localHost/(xmlTecmundo)/serviceWorker.js")
   .then(reg => console.log("serviceWorker: Registered"))
   .catch(err => console.log("serviceWorker: Error" + err) )
 })
