@@ -5,14 +5,14 @@
     resp = xml.responseText;
     var parser = new DOMParser();
     var xmlDoc = parser.parseFromString(resp, "text/xml");
-    
 
-for (var i = 0; i < xmlDoc.length; i++) {
   const  img = xmlDoc.getElementsByTagName("image")[0];
   const  url = img.getElementsByTagName("url")[0];
   const  title = xmlDoc.getElementsByTagName("title")[0];
   const  description = xmlDoc.getElementsByTagName("description")[0];
 
+console.log(xmlDoc);
+for (var i = 0; i < xmlDoc.length; i++) {
   var div = document.createElement("div")
   var image = document.createElement("img");
   var h1 = document.createElement("h1");
