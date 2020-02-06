@@ -5,6 +5,7 @@
     resp = xml.responseText;
     var parser = new DOMParser();
     var xmlDoc = parser.parseFromString(resp, "text/xml");
+    
 
 for (var i = 0; i < xmlDoc.length; i++) {
   const  img = xmlDoc.getElementsByTagName("image")[0];
