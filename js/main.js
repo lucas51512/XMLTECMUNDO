@@ -10,11 +10,24 @@ xml.addEventListener("load", function(){
   var item = xmlDoc.getElementsByTagName("item");
   console.log(item);
 
-//  var  img = xmlDoc.getElementsByTagName("image")[0].getAttribute('url');
-//  var imgTitle = document.createElement("img");
-//  let div2 = document.createElement("div");
-//  div2.appendChild(imgTitle);
+const  imgTitle = xmlDoc.getElementsByTagName("image")[0];
+const  urlTitle = imgTitle.getElementsByTagName("url")[0];
+const  mainTitle = xmlDoc.getElementsByTagName("title")[0];
+const  mainDescription = xmlDoc.getElementsByTagName("description")[0];
 
+var divTitle = document.createElement("div")
+var imageTitle = document.createElement("img");
+var h1Title = document.createElement("h1");
+var pMain = document.createElement("p");
+imageTitle.src = urlTitle.textContent;
+
+document.body.appendChild(divTitle);
+divTitle.appendChild(imageTitle);
+divTitle.appendChild(h1Title);
+divTitle.appendChild(pMain);
+
+h1Title.textContent = mainTitle.textContent;
+pMain.textContent = mainDescription.textContent;
 
   for(i = 0;i < item.length;i++){
   var  url = item[i].getElementsByTagName("enclosure")[0].getAttribute('url');
