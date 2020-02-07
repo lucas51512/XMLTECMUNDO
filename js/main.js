@@ -7,32 +7,35 @@ xml.addEventListener("load", function(){
   var parser = new DOMParser();
   var xmlDoc = parser.parseFromString(resp, "text/xml");
 
-  for (var i = 0; i < xmlDoc.length; i++) {
+  var item = xmlDoc.getElementsByTagName("item")[0];
+  console.log(item);
 
-    var  img = xmlDoc.getElementsByTagName("image")[0];
-    var  url = img.getElementsByTagName("url")[0];
-    var  title = xmlDoc.getElementsByTagName("title")[0];
-    var  description = xmlDoc.getElementsByTagName("description")[0];
+for (var i = 0; i < item.length; i++) {
+  var  img = xmlDoc.getElementsByTagName("image")[0];
+  var  url = img.getElementsByTagName("url")[0];
+  var  title = xmlDoc.getElementsByTagName("title")[0];
+  var  description = xmlDoc.getElementsByTagName("description")[0];
 
-    var div = document.createElement("div")
-    var image = document.createElement("img");
-    var h1 = document.createElement("h1");
-    var p = document.createElement("p");
-    image.src = url.textContent;
+  var div = document.createElement("div");
+  var image = document.createElement("img");
+  var h1 = document.createElement("h1");
+  var p = document.createElement("p");
+  image.src = url.textContent;
 
-    document.body.appendChild(div);
-    div.appendChild(image);
-    div.appendChild(h1);
-    div.appendChild(p);
+  document.body.appendChild(div);
+  div.appendChild(image);
+  div.appendChild(h1);
+  div.appendChild(p);
 
-    h1.textContent = title.textContent;
-    p.textContent = description.textContent;
+  h1.textContent = title.textContent;
+  p.textContent = description.textContent;
+}
 
-  }
-
-
-
-
+localStorage.setItem("dom", dom);
+localStorage.setItem("urlImage", baseImg);
+localStorage.setItem("titulo", buscaTitulo.textContent );
+localStorage.setItem("descricao", descricao.textContent);
+}
 });
     xml.send();
 
