@@ -1,6 +1,5 @@
 const xml = new XMLHttpRequest();
 var resp = '';
-console.log(xml);
 xml.open("GET", "https://rss.tecmundo.com.br/feed");
 xml.addEventListener("load", function(){
   resp = xml.responseText;
@@ -8,7 +7,6 @@ xml.addEventListener("load", function(){
   var xmlDoc = parser.parseFromString(resp, "text/xml");
 
   var item = xmlDoc.getElementsByTagName("item");
-  console.log(item);
 
 const  imgTitle = xmlDoc.getElementsByTagName("image")[0];
 const  urlTitle = imgTitle.getElementsByTagName("url")[0];
@@ -29,10 +27,10 @@ divTitle.appendChild(pMain);
 h1Title.textContent = mainTitle.textContent;
 pMain.textContent = mainDescription.textContent;
 
-  for(i = 0;i < item.length;i++){
-  var  url = item[i].getElementsByTagName("enclosure")[0].getAttribute('url');
-  var  title = item[i].getElementsByTagName("title")[0];
-  var  description = item[i].getElementsByTagName("description")[0];
+
+  var  url = xmlDoc.getElementsByTagName("enclosure")[0].getAttribute('url');
+  var  title = xmlDoc.getElementsByTagName("title")[0];
+  var  description = xmlDoc.getElementsByTagName("description")[0];
 
   var dom = document;
   var div = document.createElement("div");
@@ -48,8 +46,6 @@ pMain.textContent = mainDescription.textContent;
 
   h1.textContent = title.textContent;
   p.outerHTML = description.textContent;
-}
-console.log(document);
 
 localStorage.setItem("dom", dom);
 localStorage.setItem("image", url);
