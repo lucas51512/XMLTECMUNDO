@@ -58,8 +58,6 @@ localStorage.setItem("descricao", description);
 
 });
 
-
-
     xml.send();
 
     if ('serviceWorker' in navigator) {
