@@ -30,9 +30,9 @@ xml.addEventListener("load", function() {
   pMain.textContent = mainDescription.textContent;
 
 
-    var url = item[i].getElementsByTagName("enclosure")[1].getAttribute('url');
-    var title = item[i].getElementsByTagName("title")[1];
-    var description = item[i].getElementsByTagName("description")[1];
+    var url = xmlDoc.getElementsByTagName("enclosure")[0].getAttribute('url');
+    var title = xmlDoc.getElementsByTagName("title")[2];
+    var description = xmlDoc.getElementsByTagName("description")[1];
 
     var dom = document;
     var div = document.createElement("div");
