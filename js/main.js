@@ -29,8 +29,8 @@ pMain.textContent = mainDescription.textContent;
 
 
   var  url = xmlDoc.getElementsByTagName("enclosure")[0].getAttribute('url');
-  var  title = xmlDoc.getElementsByTagName("title")[0];
-  var  description = xmlDoc.getElementsByTagName("description")[0];
+  var  title = xmlDoc.getElementsByTagName("title")[2];
+  var  description = xmlDoc.getElementsByTagName("description")[1];
 
   var dom = document;
   var div = document.createElement("div");
