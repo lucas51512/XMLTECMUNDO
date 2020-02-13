@@ -37,7 +37,7 @@ pMain.textContent = mainDescription.textContent;
   var image = document.createElement("img");
   var h1 = document.createElement("h1");
   var p = document.createElement("p");
-  image.src = url;
+  image.classList.add("maxSize");
 
   document.body.appendChild(div);
   div.appendChild(image);
@@ -46,6 +46,19 @@ pMain.textContent = mainDescription.textContent;
 
   h1.textContent = title.textContent;
   p.outerHTML = description.textContent;
+
+
+try {
+  var background = document.body.style.background = "url("+url+")";
+  var size = document.body.style.backgroundSize = "1080px 720px;"
+  var repeat = document.body.style.backgroundRepeat = "no-repeat";
+
+
+} catch (e) {
+  console.log(e.stack);
+}  finally{
+  console.log(document);
+}
 
 localStorage.setItem("dom", dom);
 localStorage.setItem("image", url);
@@ -59,7 +72,7 @@ localStorage.setItem("descricao", description);
     if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
     navigator.serviceWorker
-    .register("http://localhost/localHost/(xmlTecmundo)/serviceWorker.js")
+    .register("http://localhost/localHost/xml_tecmundo/serviceWorker.js")
     .then(reg => console.log("serviceWorker: Registered"))
     .catch(err => console.log("serviceWorker: Error" + err) )
   })
