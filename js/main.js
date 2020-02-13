@@ -30,16 +30,16 @@ xml.addEventListener("load", function() {
   pMain.textContent = mainDescription.textContent;
 
 
-    var url = xmlDoc.getElementsByTagName("enclosure")[0].getAttribute('url');
-    var title = xmlDoc.getElementsByTagName("title")[2];
-    var description = xmlDoc.getElementsByTagName("description")[1];
+  var  url = xmlDoc.getElementsByTagName("enclosure")[0].getAttribute('url');
+  var  title = xmlDoc.getElementsByTagName("title")[2];
+  var  description = xmlDoc.getElementsByTagName("description")[1];
 
-    var dom = document;
-    var div = document.createElement("div");
-    var image = document.createElement("img");
-    var h1 = document.createElement("h1");
-    var p = document.createElement("p");
-    image.src = url;
+  var dom = document;
+  var div = document.createElement("div");
+  var image = document.createElement("img");
+  var h1 = document.createElement("h1");
+  var p = document.createElement("p");
+  image.classList.add("maxSize");
 
     document.body.appendChild(div);
     div.appendChild(image);
@@ -49,12 +49,23 @@ xml.addEventListener("load", function() {
     h1.textContent = title.textContent;
     p.outerHTML = description.textContent;
 
-  console.log(document);
 
-  localStorage.setItem("dom", dom);
-  localStorage.setItem("image", url);
-  localStorage.setItem("titulo", title);
-  localStorage.setItem("descricao", description);
+try {
+  var background = document.body.style.background = "url("+url+")";
+  var size = document.body.style.backgroundSize = "1080px 720px;"
+  var repeat = document.body.style.backgroundRepeat = "no-repeat";
+
+
+} catch (e) {
+  console.log(e.stack);
+}  finally{
+  console.log(document);
+}
+
+localStorage.setItem("dom", dom);
+localStorage.setItem("image", url);
+localStorage.setItem("titulo", title);
+localStorage.setItem("descricao", description);
 
 });
 
@@ -63,8 +74,8 @@ xml.send();
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register("http://localhost/localHost/(xmlTecmundo)/serviceWorker.js")
-      .then(reg => console.log("serviceWorker: Registered"))
-      .catch(err => console.log("serviceWorker: Error" + err))
+    .register("http://localhost/localHost/xml_tecmundo/serviceWorker.js")
+    .then(reg => console.log("serviceWorker: Registered"))
+    .catch(err => console.log("serviceWorker: Error" + err) )
   })
 }
