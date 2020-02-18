@@ -1,26 +1,26 @@
-.maxSize{
+.maxSize {
   position: fixed;
   display: table;
   top: 0vh;
-  right:0%;
-  width:110%;
-  height:100%;
+  right: 0%;
+  width: 110%;
+  height: 100%;
   text-align: center;
   color: white;
   background-position: 30% 45%;
   z-index: -1;
 }
 
-.titulo{
+.titulo {
   position: fixed;
   left: 33%;
   top: 0.5%;
-  color:white;
+  color: white;
   font-family: arial;
   text-shadow: black 0.1em 0.1em 0.2em;
 }
 
-.descricao{
+.descricao {
   position: fixed;
   left: 36%;
   top: 6.5vh;
@@ -29,7 +29,7 @@
   text-shadow: black 0.1em 0.1em 0.2em;
 }
 
-.mainTitle{
+.mainTitle {
   position: fixed;
   top: 57vh;
   left: 3%;
@@ -38,7 +38,7 @@
   text-shadow: black 0.1em 0.1em 0.2em;
 }
 
-.mainDescrip{
+.mainDescrip {
   position: fixed;
   top: 67vh;
   left: 2%;
@@ -49,11 +49,10 @@
   font-family: arial;
   font-size: 120%;
   color: white;
-
 }
 
-.background{
-  background-color: rgba(0,0,0,0.6);
+.background {
+  background-color: rgba(0, 0, 0, 0.6);
   border-width: 1px;
   border-style: solid;
   border-color: black;
