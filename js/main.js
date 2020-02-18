@@ -1,6 +1,5 @@
 const xml = new XMLHttpRequest();
 var resp = '';
-console.log(xml);
 xml.open("GET", "https://rss.tecmundo.com.br/feed");
 xml.addEventListener("load", function() {
   resp = xml.responseText;
@@ -8,7 +7,8 @@ xml.addEventListener("load", function() {
   var xmlDoc = parser.parseFromString(resp, "text/xml");
 
   var item = xmlDoc.getElementsByTagName("item");
-  console.log(item);
+  var screenHeight = screen.height;
+
 
   const imgTitle = xmlDoc.getElementsByTagName("image")[0];
   const urlTitle = imgTitle.getElementsByTagName("url")[0];
@@ -39,28 +39,41 @@ xml.addEventListener("load", function() {
   var image = document.createElement("img");
   var h1 = document.createElement("h1");
   var p = document.createElement("p");
-  image.classList.add("maxSize");
+  var divParagraf = document.createElement("div")
+  try {
+    var imgBack = document.createElement("img");
+    imgBack.src = url;
+
+    imgBack.classList.add("maxSize");
+    h1Title.classList.add("titulo");
+    pMain.classList.add("descricao");
+    h1.classList.add("mainTitle");
+
+
+
+
+
+  } catch (e) {
+    console.log(e.stack);
+  }  finally{
+    console.log(document);
+  }
+
 
     document.body.appendChild(div);
     div.appendChild(image);
+    div.appendChild(imgBack);
     div.appendChild(h1);
-    div.appendChild(p);
+    div.appendChild(divParagraf);
+    divParagraf.appendChild(p);
+
+    divParagraf.classList.add("mainDescrip");
+    divParagraf.classList.add("background");
+
 
     h1.textContent = title.textContent;
     p.outerHTML = description.textContent;
 
-
-try {
-  var background = document.body.style.background = "url("+url+")";
-  var size = document.body.style.backgroundSize = "1080px 720px;"
-  var repeat = document.body.style.backgroundRepeat = "no-repeat";
-
-
-} catch (e) {
-  console.log(e.stack);
-}  finally{
-  console.log(document);
-}
 
 localStorage.setItem("dom", dom);
 localStorage.setItem("image", url);
