@@ -7,8 +7,8 @@ xml.addEventListener("load", function() {
   var xmlDoc = parser.parseFromString(resp, "text/xml");
 
   var item = xmlDoc.getElementsByTagName("item");
-  var screenHeight = screen.height;
-
+  var sH = screen.height;
+  var sW = screen.width;
 
   const imgTitle = xmlDoc.getElementsByTagName("image")[0];
   const urlTitle = imgTitle.getElementsByTagName("url")[0];
@@ -29,7 +29,6 @@ xml.addEventListener("load", function() {
   h1Title.textContent = mainTitle.textContent;
   pMain.textContent = mainDescription.textContent;
 
-
   var url = xmlDoc.getElementsByTagName("enclosure")[0].getAttribute('url');
   var title = xmlDoc.getElementsByTagName("title")[2];
   var description = xmlDoc.getElementsByTagName("description")[1];
@@ -49,16 +48,11 @@ xml.addEventListener("load", function() {
     pMain.classList.add("descricao");
     h1.classList.add("mainTitle");
 
-
-
-
-
   } catch (e) {
     console.log(e.stack);
   } finally {
     console.log(document);
   }
-
 
   document.body.appendChild(div);
   div.appendChild(image);
@@ -70,15 +64,15 @@ xml.addEventListener("load", function() {
   divParagraf.classList.add("mainDescrip");
   divParagraf.classList.add("background");
 
-
   h1.textContent = title.textContent;
   p.outerHTML = description.textContent;
-
 
   localStorage.setItem("dom", dom);
   localStorage.setItem("image", url);
   localStorage.setItem("titulo", title);
   localStorage.setItem("descricao", description);
+
+  
 
 });
 
