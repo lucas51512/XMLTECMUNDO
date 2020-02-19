@@ -1,4 +1,4 @@
-@media(min-width: 854px) and (min-height:480px){
+
   .maxSize {
     position: fixed;
     display: table;
@@ -59,9 +59,9 @@
     border-style: solid;
     border-color: black;
     border-radius: 10px;
-  }
+
 }
-@media (min-width:1024px) and (min-height:1080px) {
+@media (min-width:1366px) and (min-height:768px) {
 
   .titulo {
   font-size: 140%;
@@ -82,8 +82,9 @@
   }
 
   .mainDescrip {
-    top: 71vh;
-    font-size: 130%;
+    top: 72vh;
+    font-size: 135.5%;
+
   }
 }
 @media (min-width:1920px) and (min-height:1080px) {

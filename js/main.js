@@ -72,7 +72,7 @@ xml.addEventListener("load", function() {
   localStorage.setItem("titulo", title);
   localStorage.setItem("descricao", description);
 
-  
+
 
 });
 
