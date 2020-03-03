@@ -1,6 +1,6 @@
 const xml = new XMLHttpRequest();
 var resp = '';
-xml.open("GET", "https://rss.tecmundo.com.br/feed");
+xml.open("GET", "http://g1.globo.com/dynamo/pop-arte/rss2.xml");
 xml.addEventListener("load", function() {
   resp = xml.responseText;
   var parser = new DOMParser();
@@ -21,6 +21,10 @@ xml.addEventListener("load", function() {
   var pMain = document.createElement("p");
   imageTitle.src = urlTitle.textContent;
 
+    imageTitle.setAttribute("id", "imageTitle");
+    h1Title.setAttribute("id", "mainTitle");
+    pMain.setAttribute("id", "pMain");
+
   document.body.appendChild(divTitle);
   divTitle.appendChild(imageTitle);
   divTitle.appendChild(h1Title);
@@ -29,60 +33,29 @@ xml.addEventListener("load", function() {
   h1Title.textContent = mainTitle.textContent;
   pMain.textContent = mainDescription.textContent;
 
-  var url = xmlDoc.getElementsByTagName("enclosure")[0].getAttribute('url');
   var title = xmlDoc.getElementsByTagName("title")[2];
   var description = xmlDoc.getElementsByTagName("description")[1];
 
-  var dom = document;
   var div = document.createElement("div");
-  var image = document.createElement("img");
   var h1 = document.createElement("h1");
   var p = document.createElement("p");
-  var divParagraf = document.createElement("div")
-  try {
-    var imgBack = document.createElement("img");
-    imgBack.src = url;
+  var divParagraf = document.createElement("div");
 
-    imgBack.classList.add("maxSize");
-    h1Title.classList.add("titulo");
-    pMain.classList.add("descricao");
-    h1.classList.add("mainTitle");
+   h1.setAttribute("id", "h1Title");
+   p.setAttribute("id", "pDescrip");
 
-  } catch (e) {
-    console.log(e.stack);
-  } finally {
-    console.log(document);
-  }
+   console.log(p);
 
   document.body.appendChild(div);
-  div.appendChild(image);
-  div.appendChild(imgBack);
   div.appendChild(h1);
   div.appendChild(divParagraf);
   divParagraf.appendChild(p);
 
-  divParagraf.classList.add("mainDescrip");
-  divParagraf.classList.add("background");
-
   h1.textContent = title.textContent;
   p.outerHTML = description.textContent;
 
-  localStorage.setItem("dom", dom);
-  localStorage.setItem("image", url);
-  localStorage.setItem("titulo", title);
-  localStorage.setItem("descricao", description);
-
-
+  var img = description.getElementsByTagName("img");
 
 });
 
 xml.send();
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register("http://localhost/localHost/xml_tecmundo/serviceWorker.js")
-      .then(reg => console.log("serviceWorker: Registered"))
-      .catch(err => console.log("serviceWorker: Error" + err))
-  })
-}
